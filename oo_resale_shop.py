@@ -78,6 +78,9 @@ def main():
     inventory.update_price(1, 500)
     inventory.print_inventory()
 
+    macpro.update_price(1000)
+    inventory.print_inventory()
+
     inventory.refurbish(1)
     inventory.print_inventory()
 
