@@ -26,12 +26,6 @@ class ResaleShop:
             print("Item", itemID, "sold!")
         else: 
             print("Item", itemID, "not found. Please select another item to sell.")
-
-    def update_price(self, itemID: int, new_price: int):
-        if itemID in self.inventory:
-            self.inventory[itemID]["price"] = new_price
-        else:
-            print("Item", itemID, "not found. Cannot update price.")
     
     def print_inventory(self):
         # If the inventory is not empty
@@ -39,37 +33,32 @@ class ResaleShop:
             # For each item
             for itemID in self.inventory:
                 # Print its details
-                print(f'Item ID: {itemID} : {self.inventory[itemID]}')
+                print("Item ID:", itemID, ":", self.inventory[itemID].attributes())
         else:
             print("No inventory to display.")
 
-    def refurbish(self, itemID: int, new_os: Optional[str] = None):
+    def update_price(self, itemID: int, new_price: int):
         if itemID in self.inventory:
-            computer = self.inventory[itemID] # locate the computer
-            if int(computer["year_made"]) < 2000:
-                computer["price"] = 0 # too old to sell, donation only
-            elif int(computer["year_made"]) < 2012:
-                computer["price"] = 250 # heavily-discounted price on machines 10+ years old
-            elif int(computer["year_made"]) < 2018:
-                computer["price"] = 550 # discounted price on machines 4-to-10 year old machines
-            else:
-                computer["price"] = 1000 # recent stuff
-
-            if new_os is not None:
-                computer["operating_system"] = new_os # update details after installing new OS
+            self.inventory[itemID].price = new_price
         else:
-            print("Item", itemID, "not found. Please select another item to refurbish.")
+            print("Item", itemID, "not found. Cannot update price.")
         
 def main():
-    inv = ResaleShop()
-    myComputer = Computer(
+
+    inventory = ResaleShop()
+    
+    # First, let's make a computer
+    computer = Computer(
         "Mac Pro (Late 2013)",
         "3.5 GHc 6-Core Intel Xeon E5",
         1024, 64,
         "macOS Big Sur", 2013, 1500)
 
-    inv.buy(myComputer)
-    inv.print_inventory()
-    inv.refurbish(3)
-    inv.sell(1)
+    inventory.buy(computer)
+    inventory.print_inventory()
+    inventory.update_price(1, 500)
+    inventory.print_inventory()
+    inventory.sell(1)
+    inventory.print_inventory()
+
 main()

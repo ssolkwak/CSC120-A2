@@ -26,6 +26,5 @@ class Computer:
         self.price = price
 
     # What methods will you need?
-
-
-    
+    def attributes(self):
+        return vars(self)
