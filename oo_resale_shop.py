@@ -42,12 +42,28 @@ class ResaleShop:
             self.inventory[itemID].price = new_price
         else:
             print("Item", itemID, "not found. Cannot update price.")
+
+    def refurbish(self, item_id: int, new_os: Optional[str] = None):
+        if item_id in self.inventory:
+            computer = self.inventory[item_id] # locate the computer
+            if int(computer.year_made) < 2000:
+                computer.price = 0 # too old to sell, donation only
+            elif int(computer.year_made) < 2012:
+                computer.price = 250 # heavily-discounted price on machines 10+ years old
+            elif int(computer.year_made) < 2018:
+                computer.price = 550 # discounted price on machines 4-to-10 year old machines
+            else:
+                computer.price = 1000 # recent stuff
+
+            if new_os is not None:
+                computer.operating_system = new_os # update details after installing new OS
+        else:
+            print("Item", item_id, "not found. Please select another item to refurbish.")
         
 def main():
 
     inventory = ResaleShop()
     
-    # First, let's make a computer
     computer = Computer(
         "Mac Pro (Late 2013)",
         "3.5 GHc 6-Core Intel Xeon E5",
@@ -56,8 +72,13 @@ def main():
 
     inventory.buy(computer)
     inventory.print_inventory()
+
     inventory.update_price(1, 500)
     inventory.print_inventory()
+
+    inventory.refurbish(1)
+    inventory.print_inventory()
+    
     inventory.sell(1)
     inventory.print_inventory()
 

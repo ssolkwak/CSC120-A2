@@ -1,5 +1,7 @@
 class Computer:
     
+    from typing import Optional
+
     # What attributes will it need?
     description: str 
     processor_type: str 
@@ -26,5 +28,21 @@ class Computer:
         self.price = price
 
     # What methods will you need?
+    def update_price(self, new_price: int):
+        self.price = new_price
+
+    def refurbish(self, new_os: Optional[str] = None):
+            if int(self.year_made) < 2000:
+                self.price = 0 # too old to sell, donation only
+            elif int(self.year_made) < 2012:
+                self.price = 250 # heavily-discounted price on machines 10+ years old
+            elif int(self.year_made) < 2018:
+                self.price = 550 # discounted price on machines 4-to-10 year old machines
+            else:
+                self.price = 1000 # recent stuff
+
+            if new_os is not None:
+                self.operating_system = new_os # update details after installing new OS
+
     def attributes(self):
         return vars(self)
