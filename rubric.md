@@ -17,11 +17,11 @@ __YES__ 1 pt: Constructor for `Computer` class is present and sets attributes co
 
 ### Level 2 (3 pts)
 
-____ 1 pt: All expected attributes for `ResaleShop` class are present
+__YES__ 1 pt: All expected attributes for `ResaleShop` class are present
 
-____ 1 pt: All expected methods for `ResaleShop` class are present
+__YES__ 1 pt: All expected methods for `ResaleShop` class are present
 
-____ 1 pt: Constructor for `ResaleShop` class is present and sets attributes correctly
+__YES__ 1 pt: Constructor for `ResaleShop` class is present and sets attributes correctly
 
 ### Level 3 (4 pts)
 
@@ -35,11 +35,11 @@ ____ 1 pt: Program prints appropriate error messages
 
 ## General Items (10 pts):
 
-_____ 4 pts: Program executes fully & consistently without crashing (exception/freeze)
+__YES__ 4 pts: Program executes fully & consistently without crashing (exception/freeze)
 
 _____ 1 pt: Classes & class members all have header comments
 
-_____ 1 pt: Clear and consistent indentation
+__YES__ 1 pt: Clear and consistent indentation
 
 _____ 1 pt: Adheres to conventions on naming / capitalization
 
