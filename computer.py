@@ -2,7 +2,7 @@ class Computer:
     
     from typing import Optional
 
-    # What attributes will it need?
+    # computer attributes
     description: str 
     processor_type: str 
     hard_drive_capacity: int 
@@ -11,7 +11,7 @@ class Computer:
     year_made: int 
     price: int 
 
-    # How will you set up your constructor?
+    # Contructor
     def __init__(self, description: str, 
                  processor_type: str, 
                  hard_drive_capacity: int, 
@@ -27,10 +27,11 @@ class Computer:
         self.year_made = year_made
         self.price = price
 
-    # What methods will you need?
+    # update price of computer
     def update_price(self, new_price: int):
         self.price = new_price
 
+    # update OS and/or price depending on the year made
     def refurbish(self, new_os: Optional[str] = None):
             if int(self.year_made) < 2000:
                 self.price = 0 # too old to sell, donation only
@@ -44,5 +45,6 @@ class Computer:
             if new_os is not None:
                 self.operating_system = new_os # update details after installing new OS
 
+    # returns all details on computer
     def attributes(self):
         return vars(self)
