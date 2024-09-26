@@ -45,6 +45,5 @@ class Computer:
             if new_os is not None:
                 self.operating_system = new_os # update details after installing new OS
 
-    # returns all details on computer
-    def attributes(self):
-        return vars(self)
+    def __repr__(self):
+        return f"{self.description, self.processor_type, self.hard_drive_capacity, self.memory, self.operating_system, self.year_made, self.price}"
